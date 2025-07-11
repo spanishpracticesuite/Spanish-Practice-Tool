@@ -1,7 +1,6 @@
-// 🌐 Your deployed Apps Script Web App URL
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzDVvtRFmTC5hOmXbC--hQ0cfkkx5vZ5xUzKwnmyG51-UtfyBCnpPkoJTOHIDFzLVJ-/exec";
 
-// 🎯 Callback to handle returned student data
+// 🎯 This is the function Apps Script will call when sending back student data
 function handleStudentProfile(data) {
   if (data.error) {
     alert("Estudiante no encontrado.");
@@ -10,11 +9,11 @@ function handleStudentProfile(data) {
   }
 }
 
-// 🚀 Load student data using JSONP
+// 🚀 Creates a <script> tag to load data from Apps Script using JSONP
 function loadStudentData() {
   const studentID = document.getElementById("studentCode").value.trim();
   if (!studentID) {
-    alert("Por favor ingresa un código de estudiante válido.");
+    alert("Por favor ingresa un código válido.");
     return;
   }
 
@@ -24,7 +23,7 @@ function loadStudentData() {
   document.body.appendChild(script);
 }
 
-// 🧾 Display the student’s interest profile and learning focus
+// 🧾 Display student profile in the interface
 function displayStudentProfile(data) {
   const div = document.getElementById("studentProfile");
   div.innerHTML = `
@@ -39,5 +38,5 @@ function displayStudentProfile(data) {
   div.style.display = "block";
 }
 
-// 🎯 Attach the click handler to the button
+// 🔘 Attach the click handler
 document.getElementById("loadProfileBtn").addEventListener("click", loadStudentData);
